@@ -88,10 +88,12 @@ public class Conenection {
 			
 			
 			
-			found.add(new Moeda(json.getJSONObject(key).getString("nome"), json.getJSONObject(key).getDouble("valor")));
+			found.add(new Moeda(json.getJSONObject(key).getString("nome"),
+					            json.getJSONObject(key).getDouble("valor"),
+					            json.getJSONObject(key).getDouble("ultima_consulta"),
+					            json.getJSONObject(key).getString("fonte")));
 		    
 		}
-
                 
         return found;
 

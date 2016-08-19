@@ -4,23 +4,23 @@ public class Moeda {
 
 	private String nome;
 	private double valor;
-	private String ultimaConsulta;
+	private double ultimaConsulta;
 	private String fonte;
 	
 	
-//	public Moeda(String nome, double valor, String ultimaConsulta, String fonte) {
-//		this.nome = nome;
-//		this.valor = valor;
-//		this.ultimaConsulta = ultimaConsulta;
-//		this.fonte = fonte;
-//	}
-	
-	
-	//Construtor para teste
-	public Moeda(String nome, double valor) {
+	public Moeda(String nome, double valor, double ultimaConsulta, String fonte) {
 		this.nome = nome;
 		this.valor = valor;
+		this.ultimaConsulta = ultimaConsulta;
+		this.fonte = fonte;
 	}
+	
+	
+//	//Construtor para teste
+//	public Moeda(String nome, double valor) {
+//		this.nome = nome;
+//		this.valor = valor;
+//	}
 
 	//Setters e Getters
 	public String getNome() {
@@ -42,12 +42,12 @@ public class Moeda {
 	}
 
 
-	public String getUltimaConsulta() {
+	public double getUltimaConsulta() {
 		return ultimaConsulta;
 	}
 
 
-	public void setUltimaConsulta(String ultimaConsulta) {
+	public void setUltimaConsulta(double ultimaConsulta) {
 		this.ultimaConsulta = ultimaConsulta;
 	}
 
