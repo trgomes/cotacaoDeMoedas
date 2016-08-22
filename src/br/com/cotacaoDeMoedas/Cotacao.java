@@ -17,6 +17,8 @@ public class Cotacao {
 		Model model = new Model();
 		model.getData("http://api.promasters.net.br/cotacao/v1/valores");
 		
+		System.out.println("Moeda especifica => "+model.getMoeda(0).getNome()+" \n");
+		
 		List<Moeda> result = model.getBD();
 		
 		//System.out.println(result);
@@ -27,8 +29,7 @@ public class Cotacao {
 			System.out.println("1 " + moeda.getNome() + " = " + 
 					           Cotacao.formataMoeda(moeda.getValor())+
 					           "\nUltima consulta: " + moeda.getUltimaConsulta() + 
-					           "\nFonte" + moeda.getFonte() + "\n" );
-			
+					           "\nFonte" + moeda.getFonte() + "\n" );			
 		}		
 
 	}

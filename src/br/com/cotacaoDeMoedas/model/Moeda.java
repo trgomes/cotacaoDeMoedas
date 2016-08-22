@@ -15,13 +15,6 @@ public class Moeda {
 		this.fonte = fonte;
 	}
 	
-	
-//	//Construtor para teste
-//	public Moeda(String nome, double valor) {
-//		this.nome = nome;
-//		this.valor = valor;
-//	}
-
 	//Setters e Getters
 	public String getNome() {
 		return nome;
@@ -60,6 +53,5 @@ public class Moeda {
 	public void setFonte(String fonte) {
 		this.fonte = fonte;
 	}
-	
-	
+		
 }

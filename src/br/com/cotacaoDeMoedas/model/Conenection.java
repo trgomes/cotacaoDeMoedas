@@ -17,7 +17,9 @@ public class Conenection {
         final StringBuilder result = new StringBuilder();
 
         URL url;
+        
         HttpURLConnection urlConnection = null;
+        
         try {
             url = new URL(s);
 
@@ -54,11 +56,11 @@ public class Conenection {
         
         //System.out.println(teste.getJSONObject("valores").getJSONObject("USD").get("valor"));
         
-        //System.out.println(obj.getJSONObject("valores"));
+        //System.out.println(obj.getJSONObject("valores"));        
+        
+        List<Moeda> finalResult = generateJSON(obj.getJSONObject("valores"));            
         
         
-        List<Moeda> finalResult = generateJSON(obj.getJSONObject("valores"));
-
         return finalResult;
     }
 

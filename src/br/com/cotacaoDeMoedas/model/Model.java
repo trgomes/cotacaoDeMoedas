@@ -8,12 +8,20 @@ public class Model {
 	
 	private Conenection con = new Conenection();
 	
-	
+	//Retorna a lista de moedas
 	public List<Moeda> getBD(){
 		return bd;
 	}
 	
+	//Salva todos os dados no bd
 	public void getData(String url) throws JSONException{
 		bd = con.getData(url);
 	}
+	
+	//Retorna o objeto referenta a moedas especifica
+	public Moeda getMoeda(int index){
+		return bd.get(index);
+	}
+	
+	
 }
