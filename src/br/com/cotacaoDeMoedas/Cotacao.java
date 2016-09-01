@@ -22,7 +22,7 @@ public class Cotacao {
 		List<Moeda> result = model.getBD();
 		
 		//System.out.println(result);
-		System.out.println(">>> Cotação de moedas <<<\n");
+		System.out.println(">>> CotaÃ§Ã£o de moedas <<<\n");
 								
 		for(Moeda moeda:result){
 			
