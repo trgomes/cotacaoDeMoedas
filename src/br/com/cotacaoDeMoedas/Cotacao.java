@@ -13,6 +13,8 @@ import br.com.cotacaoDeMoedas.view.FormPrincipal;
 
 public class Cotacao {
 
+	// http://www.leepoint.net/GUI/structure/40mvc.html
+	
 //	public static void main(String[] args) throws JSONException {
 //		
 //		FormPrincipal frmPrincipal = new FormPrincipal();

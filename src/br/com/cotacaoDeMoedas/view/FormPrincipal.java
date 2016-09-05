@@ -35,19 +35,19 @@ public class FormPrincipal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FormPrincipal frame = new FormPrincipal();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					FormPrincipal frame = new FormPrincipal();
+//					frame.setVisible(true);
+//					frame.setLocationRelativeTo(null);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -99,16 +99,19 @@ public class FormPrincipal extends JFrame {
 		contentPane.add(lblFonte);
 		
 		textField = new JTextField();
+		textField.setEnabled(false);
 		textField.setBounds(184, 59, 177, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
+		textField_1.setEnabled(false);
 		textField_1.setBounds(183, 119, 178, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
+		textField_2.setEnabled(false);
 		textField_2.setBounds(183, 173, 178, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
