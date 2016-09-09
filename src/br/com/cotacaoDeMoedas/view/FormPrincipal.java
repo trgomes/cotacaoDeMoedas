@@ -28,9 +28,12 @@ import java.awt.event.ActionEvent;
 public class FormPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtValorMoeda;
+	private JTextField txtCotacao;
+	private JTextField txtFonte;
+	
+	
+	
 
 	/**
 	 * Launch the application.
@@ -55,14 +58,14 @@ public class FormPrincipal extends JFrame {
 	public FormPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setSize(381, 350);
+		setSize(431, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 356, 40);
+		panel.setBounds(5, 5, 405, 40);
 		panel.setBackground(new Color(51, 153, 255));
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -87,46 +90,47 @@ public class FormPrincipal extends JFrame {
 		lblImgMoeda.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblMoeda = new JLabel("Moeda:");
-		lblMoeda.setBounds(127, 62, 46, 14);
+		lblMoeda.setBounds(127, 62, 64, 14);
 		contentPane.add(lblMoeda);
 		
 		JLabel lblCotao = new JLabel("Cota\u00E7\u00E3o:");
-		lblCotao.setBounds(127, 122, 46, 14);
+		lblCotao.setBounds(127, 122, 64, 14);
 		contentPane.add(lblCotao);
 		
 		JLabel lblFonte = new JLabel("Fonte:");
-		lblFonte.setBounds(127, 179, 46, 14);
+		lblFonte.setBounds(127, 179, 64, 14);
 		contentPane.add(lblFonte);
 		
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setBounds(184, 59, 177, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtValorMoeda = new JTextField();
+		txtValorMoeda.setEnabled(false);
+		txtValorMoeda.setBounds(201, 59, 209, 20);
+		contentPane.add(txtValorMoeda);
+		txtValorMoeda.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setEnabled(false);
-		textField_1.setBounds(183, 119, 178, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtCotacao = new JTextField();
+		txtCotacao.setEnabled(false);
+		txtCotacao.setBounds(201, 119, 210, 20);
+		contentPane.add(txtCotacao);
+		txtCotacao.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setEnabled(false);
-		textField_2.setBounds(183, 173, 178, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtFonte = new JTextField();
+		txtFonte.setEnabled(false);
+		txtFonte.setBounds(201, 173, 209, 20);
+		contentPane.add(txtFonte);
+		txtFonte.setColumns(10);
 		
 		JComboBox cbxMoeda = new JComboBox();
 		cbxMoeda.setModel(new DefaultComboBoxModel(new String[] {"Dolar", "Euro", "Peso Argentino", "Libra Esterlina", "Bitcoin"}));
-		cbxMoeda.setBounds(5, 225, 112, 20);
+		cbxMoeda.setBounds(90, 238, 112, 31);
 		contentPane.add(cbxMoeda);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
-		btnPesquisar.setBounds(127, 224, 89, 23);
+		btnPesquisar.setBounds(212, 237, 112, 32);
 		contentPane.add(btnPesquisar);
 	}
 }
