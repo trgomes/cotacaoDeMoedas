@@ -6,11 +6,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.json.JSONException;
+
+import br.com.cotacaoDeMoedas.controller.ControllerCotacao;
+import br.com.cotacaoDeMoedas.model.Moeda;
+
 import java.awt.SystemColor;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -28,9 +36,11 @@ import java.awt.event.ActionEvent;
 public class FormPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtValorMoeda;
+	public JTextField txtValorMoeda;
 	private JTextField txtCotacao;
 	private JTextField txtFonte;
+	
+	private ControllerCotacao controller;
 	
 	
 	
@@ -55,7 +65,18 @@ public class FormPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+
+	
 	public FormPrincipal() {
+		
+		try {
+			controller = new ControllerCotacao();
+			controller.carregarBd();
+		} catch (JSONException e1) {
+			JOptionPane.showMessageDialog(null, "Erro ao carregar o BD" + e1.getMessage());
+		}
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setSize(431, 350);
@@ -63,6 +84,9 @@ public class FormPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		//Centraliza o form
+		setLocationRelativeTo(null);		
+	
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(5, 5, 405, 40);
@@ -70,7 +94,7 @@ public class FormPrincipal extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("COTA��O DE MOEDAS");
+		JLabel lblNewLabel = new JLabel("COTAÇÃO DE MOEDAS");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setForeground(SystemColor.text);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -126,8 +150,21 @@ public class FormPrincipal extends JFrame {
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addActionListener(new ActionListener() {
+			//Ação ao clicar no botão de pesquisa
 			public void actionPerformed(ActionEvent arg0) {
 				
+				int indexMoeda = cbxMoeda.getSelectedIndex();			
+				
+				try {
+					Object moeda = controller.pesquisar(indexMoeda);
+					
+					System.out.println(moeda);
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+
 			}
 		});
 		btnPesquisar.setBounds(212, 237, 112, 32);

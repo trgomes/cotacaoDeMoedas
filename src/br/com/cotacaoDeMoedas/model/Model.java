@@ -19,7 +19,7 @@ public class Model {
 	}
 	
 	//Retorna o objeto referenta a moedas especifica
-	public Moeda getMoeda(int index){
+	public Object getMoeda(int index){
 		return bd.get(index);
 	}
 	

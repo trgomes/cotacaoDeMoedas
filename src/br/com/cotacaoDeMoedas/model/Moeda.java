@@ -54,4 +54,10 @@ public class Moeda {
 		this.fonte = fonte;
 	}
 		
+	
+	public String toString(){
+		fonte = getNome() +" "+ getValor() +" "+ getFonte(); 
+		
+		return fonte;		
+	}
 }

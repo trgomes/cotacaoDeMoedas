@@ -1,12 +1,16 @@
 package br.com.cotacaoDeMoedas;
 
+import java.awt.Frame;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.json.JSONException;
 import org.omg.CORBA.PUBLIC_MEMBER;
 
+import br.com.cotacaoDeMoedas.controller.ControllerCotacao;
 import br.com.cotacaoDeMoedas.model.Model;
 import br.com.cotacaoDeMoedas.model.Moeda;
 import br.com.cotacaoDeMoedas.view.FormPrincipal;
@@ -14,12 +18,25 @@ import br.com.cotacaoDeMoedas.view.FormPrincipal;
 public class Cotacao {
 
 	// http://www.leepoint.net/GUI/structure/40mvc.html
+
+	static FormPrincipal frmPrincipal;
 	
-//	public static void main(String[] args) throws JSONException {
+	public static void main(String[] args) throws JSONException {	
+				
+		frmPrincipal = new FormPrincipal();
+		frmPrincipal.setVisible(true);	
+		
+
+		
+//		Object teste = cc.pesquisar(0);
 //		
-//		FormPrincipal frmPrincipal = new FormPrincipal();
-//		frmPrincipal.setVisible(true);
-//		frmPrincipal.setLocationRelativeTo(null);
+//		System.out.println("Classe Principal "+teste);
+		
+	
+		
+
+		
+		
 //		
 //		// TODO Auto-generated method stub		
 //		Model model = new Model();
@@ -50,6 +67,6 @@ public class Cotacao {
 //		String valorFormatado = nf.format(val);
 //		
 //		return valorFormatado;		
-//	}
+	}
 	
 }
