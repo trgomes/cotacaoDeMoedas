@@ -34,46 +34,30 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class FormPrincipal extends JFrame {
-
-	private JPanel contentPane;
-	public JTextField txtValorMoeda;
-	private JTextField txtCotacao;
-	private JTextField txtFonte;
 	
 	private ControllerCotacao controller;
-	
-	
-	
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					FormPrincipal frame = new FormPrincipal();
-//					frame.setVisible(true);
-//					frame.setLocationRelativeTo(null);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the frame.
-	 */
+	private JPanel contentPane;	
 	
+	private String nomeMoeda;
+	private String valorMoeda;
+	private String fonteMoeda;
+	
+	JTextField txtNomeMoeda;
+	JTextField txtValorMoeda;	
+	JTextField txtFonte;
+
 
 	
 	public FormPrincipal() {
 		
-		try {
+		try 
+		{
 			controller = new ControllerCotacao();
 			controller.carregarBd();
-		} catch (JSONException e1) {
+		} 
+		catch (JSONException e1)
+		{
 			JOptionPane.showMessageDialog(null, "Erro ao carregar o BD" + e1.getMessage());
 		}
 		
@@ -131,11 +115,11 @@ public class FormPrincipal extends JFrame {
 		contentPane.add(txtValorMoeda);
 		txtValorMoeda.setColumns(10);
 		
-		txtCotacao = new JTextField();
-		txtCotacao.setEnabled(false);
-		txtCotacao.setBounds(201, 119, 210, 20);
-		contentPane.add(txtCotacao);
-		txtCotacao.setColumns(10);
+		txtNomeMoeda = new JTextField();
+		txtNomeMoeda.setEnabled(false);
+		txtNomeMoeda.setBounds(201, 119, 210, 20);
+		contentPane.add(txtNomeMoeda);
+		txtNomeMoeda.setColumns(10);
 		
 		txtFonte = new JTextField();
 		txtFonte.setEnabled(false);
@@ -169,5 +153,19 @@ public class FormPrincipal extends JFrame {
 		});
 		btnPesquisar.setBounds(212, 237, 112, 32);
 		contentPane.add(btnPesquisar);
+	}
+	
+	public void update(String nomeMoeda, String valorMoeda, String fonteMoeda)
+	{
+		this.nomeMoeda = nomeMoeda;
+		this.valorMoeda = valorMoeda;
+		this.fonteMoeda = fonteMoeda;
+	}
+	
+	public void display() 
+	{
+		txtNomeMoeda.setText(nomeMoeda);
+		txtValorMoeda.setText(valorMoeda);
+		txtFonte.setText(fonteMoeda);
 	}
 }
