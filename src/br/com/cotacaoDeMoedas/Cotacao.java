@@ -24,18 +24,12 @@ public class Cotacao {
 	public static void main(String[] args) throws JSONException {	
 				
 		frmPrincipal = new FormPrincipal();
-		frmPrincipal.setVisible(true);	
-		
+		frmPrincipal.setVisible(true);			
 
 		
 //		Object teste = cc.pesquisar(0);
 //		
 //		System.out.println("Classe Principal "+teste);
-		
-	
-		
-
-		
 		
 //		
 //		// TODO Auto-generated method stub		

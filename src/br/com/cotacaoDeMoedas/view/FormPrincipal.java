@@ -35,7 +35,7 @@ import java.awt.event.ActionEvent;
 
 public class FormPrincipal extends JFrame {
 	
-	private ControllerCotacao controller;
+	private ControllerCotacao controller = new ControllerCotacao();;
 
 	private JPanel contentPane;	
 	
@@ -46,14 +46,11 @@ public class FormPrincipal extends JFrame {
 	JTextField txtNomeMoeda;
 	JTextField txtValorMoeda;	
 	JTextField txtFonte;
-
-
 	
 	public FormPrincipal() {
 		
 		try 
-		{
-			controller = new ControllerCotacao();
+		{			
 			controller.carregarBd();
 		} 
 		catch (JSONException e1)
@@ -78,7 +75,7 @@ public class FormPrincipal extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("COTA√á√ÉO DE MOEDAS");
+		JLabel lblNewLabel = new JLabel("COT«√O DE MOEDAS");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setForeground(SystemColor.text);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -110,19 +107,19 @@ public class FormPrincipal extends JFrame {
 		contentPane.add(lblFonte);
 		
 		txtValorMoeda = new JTextField();
-		txtValorMoeda.setEnabled(false);
+		txtValorMoeda.setEnabled(true);
 		txtValorMoeda.setBounds(201, 59, 209, 20);
 		contentPane.add(txtValorMoeda);
 		txtValorMoeda.setColumns(10);
 		
 		txtNomeMoeda = new JTextField();
-		txtNomeMoeda.setEnabled(false);
+		txtNomeMoeda.setEnabled(true);
 		txtNomeMoeda.setBounds(201, 119, 210, 20);
 		contentPane.add(txtNomeMoeda);
 		txtNomeMoeda.setColumns(10);
 		
 		txtFonte = new JTextField();
-		txtFonte.setEnabled(false);
+		txtFonte.setEnabled(true);
 		txtFonte.setBounds(201, 173, 209, 20);
 		contentPane.add(txtFonte);
 		txtFonte.setColumns(10);
@@ -140,14 +137,13 @@ public class FormPrincipal extends JFrame {
 				int indexMoeda = cbxMoeda.getSelectedIndex();			
 				
 				try {
-					Object moeda = controller.pesquisar(indexMoeda);
+					String[] moeda = controller.pesquisar(indexMoeda);
 					
-					System.out.println(moeda);
-					
+					update(moeda[1], moeda[0], moeda[2]);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}				
+				}
 
 			}
 		});
@@ -160,6 +156,8 @@ public class FormPrincipal extends JFrame {
 		this.nomeMoeda = nomeMoeda;
 		this.valorMoeda = valorMoeda;
 		this.fonteMoeda = fonteMoeda;
+		
+		display();
 	}
 	
 	public void display() 
