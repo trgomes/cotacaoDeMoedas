@@ -41,6 +41,8 @@ public class FormPrincipal extends JFrame {
 	private String valorMoeda;
 	private String fonteMoeda;
 	
+	JLabel lblImgMoeda;
+	
 	JTextField txtNomeMoeda;
 	JTextField txtValorMoeda;	
 	JTextField txtFonte;
@@ -58,15 +60,6 @@ public class FormPrincipal extends JFrame {
 	}
 
 	public FormPrincipal() {
-		
-//		try 
-//		{			
-//			controller.carregarBd();
-//		} 
-//		catch (JSONException e1)
-//		{
-//			JOptionPane.showMessageDialog(null, "Erro ao carregar o BD" + e1.getMessage());
-//		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -99,7 +92,7 @@ public class FormPrincipal extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblImgMoeda = new JLabel("");
+		lblImgMoeda = new JLabel("");
 		lblImgMoeda.setBounds(6, 9, 95, 120);
 		panel_1.add(lblImgMoeda);
 		lblImgMoeda.setBackground(SystemColor.controlLtHighlight);
