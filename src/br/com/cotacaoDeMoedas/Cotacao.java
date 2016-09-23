@@ -6,6 +6,7 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.xml.ws.Service.Mode;
 
 import org.json.JSONException;
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -19,12 +20,20 @@ public class Cotacao {
 
 	// http://www.leepoint.net/GUI/structure/40mvc.html
 
-	static FormPrincipal frmPrincipal;
+	private static FormPrincipal frmPrincipal;
+	private static Model model;
+	private static ControllerCotacao controller;
 	
-	public static void main(String[] args) throws JSONException {	
-				
-		frmPrincipal = new FormPrincipal();
-		frmPrincipal.setVisible(true);			
+	public static void main(String[] args) throws JSONException {			
+		
+		frmPrincipal = new FormPrincipal();	
+		
+		model = new Model();
+		
+		controller = new ControllerCotacao(model, frmPrincipal);	
+		controller.carregarBd();
+		
+		frmPrincipal.setVisible(true);
 
 		
 //		Object teste = cc.pesquisar(0);

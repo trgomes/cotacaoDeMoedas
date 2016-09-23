@@ -35,8 +35,6 @@ import java.awt.event.ActionEvent;
 
 public class FormPrincipal extends JFrame {
 	
-	private ControllerCotacao controller = new ControllerCotacao();;
-
 	private JPanel contentPane;	
 	
 	private String nomeMoeda;
@@ -46,22 +44,35 @@ public class FormPrincipal extends JFrame {
 	JTextField txtNomeMoeda;
 	JTextField txtValorMoeda;	
 	JTextField txtFonte;
+	public JComboBox cbxMoeda;
+	public JButton btnPesquisar;
 	
+	private int indexMoeda;
+	
+	public int getIndexMoeda() {
+		return indexMoeda;
+	}
+
+	public void setIndexMoeda(int indexMoeda) {
+		this.indexMoeda = indexMoeda;
+	}
+
 	public FormPrincipal() {
 		
-		try 
-		{			
-			controller.carregarBd();
-		} 
-		catch (JSONException e1)
-		{
-			JOptionPane.showMessageDialog(null, "Erro ao carregar o BD" + e1.getMessage());
-		}
+//		try 
+//		{			
+//			controller.carregarBd();
+//		} 
+//		catch (JSONException e1)
+//		{
+//			JOptionPane.showMessageDialog(null, "Erro ao carregar o BD" + e1.getMessage());
+//		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setSize(431, 350);
+		setSize(500, 350);
 		contentPane = new JPanel();
+		contentPane.setLocation(0, -54);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -70,12 +81,12 @@ public class FormPrincipal extends JFrame {
 	
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 405, 40);
-		panel.setBackground(new Color(51, 153, 255));
+		panel.setBounds(10, 8, 464, 40);
+		panel.setBackground(new Color(0, 102, 153));
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("COT«√O DE MOEDAS");
+		JLabel lblNewLabel = new JLabel("COTA\u00C7\u00C3O DE MOEDAS");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setForeground(SystemColor.text);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 16));
@@ -84,12 +95,12 @@ public class FormPrincipal extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(5, 56, 112, 137);
+		panel_1.setBounds(10, 56, 107, 137);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblImgMoeda = new JLabel("Imagem\n da\n Moeda");
-		lblImgMoeda.setBounds(10, 11, 92, 115);
+		JLabel lblImgMoeda = new JLabel("");
+		lblImgMoeda.setBounds(6, 9, 95, 120);
 		panel_1.add(lblImgMoeda);
 		lblImgMoeda.setBackground(SystemColor.controlLtHighlight);
 		lblImgMoeda.setHorizontalAlignment(SwingConstants.CENTER);
@@ -108,47 +119,40 @@ public class FormPrincipal extends JFrame {
 		
 		txtValorMoeda = new JTextField();
 		txtValorMoeda.setEnabled(true);
-		txtValorMoeda.setBounds(201, 59, 209, 20);
+		txtValorMoeda.setBounds(201, 59, 273, 20);
 		contentPane.add(txtValorMoeda);
 		txtValorMoeda.setColumns(10);
 		
 		txtNomeMoeda = new JTextField();
 		txtNomeMoeda.setEnabled(true);
-		txtNomeMoeda.setBounds(201, 119, 210, 20);
+		txtNomeMoeda.setBounds(201, 119, 273, 20);
 		contentPane.add(txtNomeMoeda);
 		txtNomeMoeda.setColumns(10);
 		
 		txtFonte = new JTextField();
 		txtFonte.setEnabled(true);
-		txtFonte.setBounds(201, 173, 209, 20);
+		txtFonte.setBounds(201, 173, 273, 20);
 		contentPane.add(txtFonte);
 		txtFonte.setColumns(10);
 		
-		JComboBox cbxMoeda = new JComboBox();
+		cbxMoeda = new JComboBox();
 		cbxMoeda.setModel(new DefaultComboBoxModel(new String[] {"Dolar", "Euro", "Peso Argentino", "Libra Esterlina", "Bitcoin"}));
-		cbxMoeda.setBounds(90, 238, 112, 31);
+		cbxMoeda.setBounds(127, 242, 112, 31);
 		contentPane.add(cbxMoeda);
 		
-		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addActionListener(new ActionListener() {
 			//A√ß√£o ao clicar no bot√£o de pesquisa
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0){				
 				
-				int indexMoeda = cbxMoeda.getSelectedIndex();			
-				
-				try {
-					String[] moeda = controller.pesquisar(indexMoeda);
-					
-					update(moeda[1], moeda[0], moeda[2]);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
 			}
 		});
-		btnPesquisar.setBounds(212, 237, 112, 32);
+		btnPesquisar.setBounds(249, 241, 112, 32);
 		contentPane.add(btnPesquisar);
+		
+		JLabel lblNewLabel_1 = new JLabel("http://api.promasters.net.br/cotacao/");
+		lblNewLabel_1.setBounds(292, 298, 192, 14);
+		contentPane.add(lblNewLabel_1);
 	}
 	
 	public void update(String nomeMoeda, String valorMoeda, String fonteMoeda)
