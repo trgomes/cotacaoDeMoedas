@@ -1,27 +1,88 @@
 package br.com.cotacaoDeMoedas.model;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
 
-public class Model {
+public class Model implements Subject {
 	private List<Moeda> bd;
 	
-	private Conenection con = new Conenection();
+	private ArrayList observers;
+	private String nomeMoeda;
+	private String valorMoeda;
+	private String fonteMoeda;
 	
+	private Conenection con;
+	
+	public Model(){
+		observers = new ArrayList();
+		con = new Conenection();
+	}
+		
 	//Retorna a lista de moedas
 	public List<Moeda> getBD(){
 		return bd;
 	}
 	
 	//Salva todos os dados no bd
-	public void getData(String url) throws JSONException{
-		bd = con.getData(url);
+	public void getData(String url){
+		try {
+			bd = con.getData(url);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//Retorna o objeto referenta a moedas especifica
 	public Object getMoeda(int index){
 		return bd.get(index);
 	}
+
+	@Override
+	public void registerObserver(Observer o) {
+		// TODO Auto-generated method stub
+		observers.add(o);		
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		// TODO Auto-generated method stub
+		int i = observers.indexOf(o);
+		if (i >= 0) {
+			observers.remove(i);
+		}		
+	}
+
+	@Override
+	public void notifyObservers() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = (Observer)observers.get(i);
+			observer.update(nomeMoeda, valorMoeda, fonteMoeda);
+		}
+		
+	}
+	
+	public void setValores(String nomeMoeda, String valorMoeda, String fonteMoeda) {
+		this.nomeMoeda = nomeMoeda;
+		this.valorMoeda = valorMoeda;
+		this.fonteMoeda = fonteMoeda;
+		notifyObservers();
+	}
+
+//	//Getters
+//	public String getNomeMoeda() {
+//		return nomeMoeda;
+//	}
+//
+//	public String getValorMoeda() {
+//		return valorMoeda;
+//	}
+//
+//	public String getFonteMoeda() {
+//		return fonteMoeda;
+//	}
 	
 	
 }

@@ -24,14 +24,15 @@ public class Cotacao {
 	private static Model model;
 	private static ControllerCotacao controller;
 	
-	public static void main(String[] args) throws JSONException {			
+	public static void main(String[] args) throws JSONException {	
 		
-		frmPrincipal = new FormPrincipal();	
+		model = new Model();		
 		
-		model = new Model();
-		
-		controller = new ControllerCotacao(model, frmPrincipal);	
+		controller = new ControllerCotacao(model);	
 		controller.carregarBd();
+		
+		frmPrincipal = new FormPrincipal(controller);			
+		model.registerObserver(frmPrincipal);
 		
 		frmPrincipal.setVisible(true);
 

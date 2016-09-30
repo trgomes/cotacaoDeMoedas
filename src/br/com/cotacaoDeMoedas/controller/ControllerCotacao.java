@@ -13,37 +13,34 @@ import org.json.JSONException;
 import br.com.cotacaoDeMoedas.Cotacao;
 import br.com.cotacaoDeMoedas.model.Model;
 import br.com.cotacaoDeMoedas.model.Moeda;
+import br.com.cotacaoDeMoedas.model.Subject;
 import br.com.cotacaoDeMoedas.view.FormPrincipal;
 
-public class ControllerCotacao implements ActionListener{
+public class ControllerCotacao implements AcessoController{
 	
 	private Model model;	
+//	private Subject model;
 	private FormPrincipal view;
 	
-	public ControllerCotacao(Model model, FormPrincipal view) {		
+	public ControllerCotacao(Model model) {		
 		this.model = model;
-		this.view = view;
-		this.view.btnPesquisar.addActionListener(this);
+//		this.view = new FormPrincipal(this);
+//		this.view.btnPesquisar.addActionListener(this);
 	}
 
 	public void carregarBd() throws JSONException{
 		model.getData("http://api.promasters.net.br/cotacao/v1/valores");		
 	}
 		
-	public void pesquisar(){		
-		Moeda mc = (Moeda) model.getMoeda(view.getIndexMoeda());
+	public void pesquisar(int index){	
+
+		Moeda mc = (Moeda) model.getMoeda(index);
 		
-//		String[] dados = new String[3];
-		 
-		String nomeMoeda = mc.getNome();
-		String valorMoeda = formataMoeda(mc.getValor());
-		String fonteMoeda = mc.getFonte();		
-		
-		view.update(nomeMoeda, valorMoeda, fonteMoeda);
+		model.setValores(mc.getNome(), formataMoeda(mc.getValor()), mc.getFonte());
 	
 	}	
 	
-	public static String formataMoeda(double valor){
+	public String formataMoeda(double valor){
 
 		BigDecimal val = new BigDecimal(String.valueOf(valor));
 		NumberFormat nf = NumberFormat.getCurrencyInstance();
@@ -52,14 +49,4 @@ public class ControllerCotacao implements ActionListener{
 		return valorFormatado;		
 	}
 
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub		
-		
-		view.setIndexMoeda(view.cbxMoeda.getSelectedIndex());
-		
-		pesquisar();
-		
-	}
 }

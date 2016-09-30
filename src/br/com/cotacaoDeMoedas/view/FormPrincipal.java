@@ -9,8 +9,11 @@ import javax.swing.border.EmptyBorder;
 
 import org.json.JSONException;
 
+import br.com.cotacaoDeMoedas.controller.AcessoController;
 import br.com.cotacaoDeMoedas.controller.ControllerCotacao;
 import br.com.cotacaoDeMoedas.model.Moeda;
+import br.com.cotacaoDeMoedas.model.Observer;
+import br.com.cotacaoDeMoedas.model.Subject;
 
 import java.awt.SystemColor;
 import java.awt.Color;
@@ -33,10 +36,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FormPrincipal extends JFrame {
+public class FormPrincipal extends JFrame implements Observer{
+		
+	private AcessoController controller;
 	
-	private JPanel contentPane;	
-	
+	private JPanel contentPane;		
 	private String nomeMoeda;
 	private String valorMoeda;
 	private String fonteMoeda;
@@ -59,7 +63,9 @@ public class FormPrincipal extends JFrame {
 		this.indexMoeda = indexMoeda;
 	}
 
-	public FormPrincipal() {
+	public FormPrincipal(ControllerCotacao co) {
+		
+		this.controller = co;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -69,6 +75,7 @@ public class FormPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
 		//Centraliza o form
 		setLocationRelativeTo(null);		
 	
@@ -137,7 +144,8 @@ public class FormPrincipal extends JFrame {
 		btnPesquisar.addActionListener(new ActionListener() {
 			//Ação ao clicar no botão de pesquisa
 			public void actionPerformed(ActionEvent arg0){				
-				
+				int index = cbxMoeda.getSelectedIndex();				
+				co.pesquisar(index);
 			}
 		});
 		btnPesquisar.setBounds(249, 241, 112, 32);
