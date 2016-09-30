@@ -1,2 +1,2 @@
 # cotacaoDeMoedas
-Simples abordagem de MVC utilizando javaSE e JSON
+Simples abordagem de MVC utilizando javaSE, JSON e **Observer Pattern**
