@@ -11,6 +11,7 @@ public class Model implements Subject {
 	private String nomeMoeda;
 	private String valorMoeda;
 	private String fonteMoeda;
+	private String imgMoeda;
 	
 	private Conenection con;
 	
@@ -59,15 +60,16 @@ public class Model implements Subject {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < observers.size(); i++) {
 			Observer observer = (Observer)observers.get(i);
-			observer.update(nomeMoeda, valorMoeda, fonteMoeda);
+			observer.update(nomeMoeda, valorMoeda, fonteMoeda,imgMoeda);
 		}
 		
 	}
 	
-	public void setValores(String nomeMoeda, String valorMoeda, String fonteMoeda) {
+	public void setValores(String nomeMoeda, String valorMoeda, String fonteMoeda, String imgMoeda) {
 		this.nomeMoeda = nomeMoeda;
 		this.valorMoeda = valorMoeda;
 		this.fonteMoeda = fonteMoeda;
+		this.imgMoeda = imgMoeda;
 		notifyObservers();
 	}
 

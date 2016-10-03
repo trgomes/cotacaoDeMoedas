@@ -35,6 +35,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class FormPrincipal extends JFrame implements Observer{
 		
@@ -44,14 +45,15 @@ public class FormPrincipal extends JFrame implements Observer{
 	private String nomeMoeda;
 	private String valorMoeda;
 	private String fonteMoeda;
+	private String imgMoeda;
 	
 	JLabel lblImgMoeda;
 	
 	JTextField txtNomeMoeda;
 	JTextField txtValorMoeda;	
 	JTextField txtFonte;
-	public JComboBox cbxMoeda;
-	public JButton btnPesquisar;
+	JComboBox cbxMoeda;
+	JButton btnPesquisar;
 	
 	private int indexMoeda;
 	
@@ -100,6 +102,7 @@ public class FormPrincipal extends JFrame implements Observer{
 		panel_1.setLayout(null);
 		
 		lblImgMoeda = new JLabel("");
+//		lblImgMoeda.setIcon(new ImageIcon(FormPrincipal.class.getResource("/br/com/cotacaoDeMoedas/view/img/0-dolar.png")));
 		lblImgMoeda.setBounds(6, 9, 95, 120);
 		panel_1.add(lblImgMoeda);
 		lblImgMoeda.setBackground(SystemColor.controlLtHighlight);
@@ -151,16 +154,17 @@ public class FormPrincipal extends JFrame implements Observer{
 		btnPesquisar.setBounds(249, 241, 112, 32);
 		contentPane.add(btnPesquisar);
 		
-		JLabel lblNewLabel_1 = new JLabel("http://api.promasters.net.br/cotacao/");
-		lblNewLabel_1.setBounds(292, 298, 192, 14);
+		JLabel lblNewLabel_1 = new JLabel("FONTE : api.promasters.net.br");
+		lblNewLabel_1.setBounds(295, 298, 179, 14);
 		contentPane.add(lblNewLabel_1);
 	}
 	
-	public void update(String nomeMoeda, String valorMoeda, String fonteMoeda)
+	public void update(String nomeMoeda, String valorMoeda, String fonteMoeda, String imgMoeda)
 	{
 		this.nomeMoeda = nomeMoeda;
 		this.valorMoeda = valorMoeda;
 		this.fonteMoeda = fonteMoeda;
+		this.imgMoeda = imgMoeda;
 		
 		display();
 	}
@@ -170,5 +174,6 @@ public class FormPrincipal extends JFrame implements Observer{
 		txtNomeMoeda.setText(nomeMoeda);
 		txtValorMoeda.setText(valorMoeda);
 		txtFonte.setText(fonteMoeda);
+		lblImgMoeda.setIcon(new ImageIcon(FormPrincipal.class.getResource(imgMoeda)));
 	}
 }

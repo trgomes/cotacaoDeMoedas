@@ -6,6 +6,7 @@ public class Moeda {
 	private double valor;
 	private double ultimaConsulta;
 	private String fonte;
+	private String img;
 	
 	
 	public Moeda(String nome, double valor, double ultimaConsulta, String fonte) {
@@ -52,6 +53,14 @@ public class Moeda {
 
 	public void setFonte(String fonte) {
 		this.fonte = fonte;
+	}
+	
+	public String getImg(){
+		return img;
+	}
+	
+	public void setImg(String img){
+		this.img = img;
 	}
 		
 	

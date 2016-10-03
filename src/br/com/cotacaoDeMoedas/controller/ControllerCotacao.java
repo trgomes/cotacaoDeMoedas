@@ -36,7 +36,17 @@ public class ControllerCotacao implements AcessoController{
 
 		Moeda mc = (Moeda) model.getMoeda(index);
 		
-		model.setValores(mc.getNome(), formataMoeda(mc.getValor()), mc.getFonte());
+		switch (index) {
+		case 0: mc.setImg("/br/com/cotacaoDeMoedas/view/img/0-dolar.png"); break;			
+		case 1: mc.setImg("/br/com/cotacaoDeMoedas/view/img/1-euro.png"); break;
+		case 2: mc.setImg("/br/com/cotacaoDeMoedas/view/img/2-pesoArgentino.png"); break;
+		case 3: mc.setImg("/br/com/cotacaoDeMoedas/view/img/3-libraEsterlina.png"); break;
+		case 4: mc.setImg("/br/com/cotacaoDeMoedas/view/img/4-bitcoin.png"); break;
+		default:
+			break;
+		}
+		
+		model.setValores(mc.getNome(), formataMoeda(mc.getValor()), mc.getFonte(), mc.getImg());
 	
 	}	
 	
