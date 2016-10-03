@@ -102,7 +102,6 @@ public class FormPrincipal extends JFrame implements Observer{
 		panel_1.setLayout(null);
 		
 		lblImgMoeda = new JLabel("");
-//		lblImgMoeda.setIcon(new ImageIcon(FormPrincipal.class.getResource("/br/com/cotacaoDeMoedas/view/img/0-dolar.png")));
 		lblImgMoeda.setBounds(6, 9, 95, 120);
 		panel_1.add(lblImgMoeda);
 		lblImgMoeda.setBackground(SystemColor.controlLtHighlight);

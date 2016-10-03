@@ -72,19 +72,5 @@ public class Model implements Subject {
 		this.imgMoeda = imgMoeda;
 		notifyObservers();
 	}
-
-//	//Getters
-//	public String getNomeMoeda() {
-//		return nomeMoeda;
-//	}
-//
-//	public String getValorMoeda() {
-//		return valorMoeda;
-//	}
-//
-//	public String getFonteMoeda() {
-//		return fonteMoeda;
-//	}
-	
 	
 }

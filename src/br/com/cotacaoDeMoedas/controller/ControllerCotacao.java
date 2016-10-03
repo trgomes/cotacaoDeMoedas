@@ -19,19 +19,18 @@ import br.com.cotacaoDeMoedas.view.FormPrincipal;
 public class ControllerCotacao implements AcessoController{
 	
 	private Model model;	
-//	private Subject model;
 	private FormPrincipal view;
 	
 	public ControllerCotacao(Model model) {		
 		this.model = model;
-//		this.view = new FormPrincipal(this);
-//		this.view.btnPesquisar.addActionListener(this);
 	}
 
+	//Carrega os dados do bd
 	public void carregarBd() throws JSONException{
 		model.getData("http://api.promasters.net.br/cotacao/v1/valores");		
 	}
-		
+	
+	//Busca os dados da moeda selecionada de acordo com a identificação do index
 	public void pesquisar(int index){	
 
 		Moeda mc = (Moeda) model.getMoeda(index);
@@ -50,6 +49,7 @@ public class ControllerCotacao implements AcessoController{
 	
 	}	
 	
+	//Formata a moeda para R$ (real)
 	public String formataMoeda(double valor){
 
 		BigDecimal val = new BigDecimal(String.valueOf(valor));
