@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.json.JSONException;
 
+import br.com.cotacaoDeMoedas.view.Observer;
+
 public class Model implements Subject {
 	private List<Moeda> bd;
 	

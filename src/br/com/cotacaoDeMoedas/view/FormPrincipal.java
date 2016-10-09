@@ -12,7 +12,6 @@ import org.json.JSONException;
 import br.com.cotacaoDeMoedas.controller.AcessoController;
 import br.com.cotacaoDeMoedas.controller.ControllerCotacao;
 import br.com.cotacaoDeMoedas.model.Moeda;
-import br.com.cotacaoDeMoedas.model.Observer;
 import br.com.cotacaoDeMoedas.model.Subject;
 
 import java.awt.SystemColor;
