@@ -21,8 +21,9 @@ public class ControllerCotacao implements AcessoController{
 	private Model model;	
 	private FormPrincipal view;
 	
-	public ControllerCotacao(Model model) {		
+	public ControllerCotacao(Model model) throws JSONException {		
 		this.model = model;
+		carregarBd();
 	}
 
 	//Carrega os dados do bd
@@ -30,7 +31,7 @@ public class ControllerCotacao implements AcessoController{
 		model.getData("http://api.promasters.net.br/cotacao/v1/valores");		
 	}
 	
-	//Busca os dados da moeda selecionada de acordo com a identificação do index
+	//Busca os dados da moeda selecionada de acordo com a identificaï¿½ï¿½o do index
 	public void pesquisar(int index){	
 
 		Moeda mc = (Moeda) model.getMoeda(index);
